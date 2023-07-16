@@ -1,6 +1,7 @@
 Config = {}
 
 Config.Currency = "money"
+Config.Distance = 5
 
 Config.Target = {
     pos = vec3(411.6988, 315.4495, 103.0624),

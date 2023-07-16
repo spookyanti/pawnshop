@@ -43,7 +43,8 @@ Citizen.CreateThread(function()
             icon = z.icon,
             args = {
                 item = k,
-                price = z.price
+                price = z.price,
+                source = Player
             },
             description = tostring(z.price.." $"),
             serverEvent = "spy_pawnshop:buy",
@@ -64,7 +65,7 @@ AddEventHandler("spy_pawnshop:menu1", function()
     if #(pcoords - coords) <= 3 then
         lib.showContext("wbmenu")
     else
-        print("zle")
+        print("Tried to open menu")
     end
 end)
 

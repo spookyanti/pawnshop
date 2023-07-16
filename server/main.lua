@@ -2,6 +2,18 @@ local ox_inventory = exports.ox_inventory
 lib.locale()
 
 RegisterNetEvent("spy_pawnshop:sell", function(args)
+    local playerPed = GetPlayerPed(source)
+    local coords = Config.Target.pos
+    local pcoords = GetEntityCoords(playerPed)
+    local distance = #(pcoords-coords)
+    if distance == nil then
+        TriggerEvent("spy_pawnshop:drp")
+        return
+    end
+    if distance > Config.Distance then
+        TriggerEvent("spy_pawnshop:drp", source)
+        return
+    end
     local items = ox_inventory:Search(source, 'count', args.item)
 
     if items >= 1 then
@@ -18,6 +30,18 @@ end)
 
 
 RegisterNetEvent("spy_pawnshop:buy", function(args)
+    local playerPed = GetPlayerPed(source)
+    local coords = Config.Target.pos
+    local pcoords = GetEntityCoords(playerPed)
+    local distance = #(pcoords-coords)
+    if distance == nil then
+        TriggerEvent("spy_pawnshop:drp")
+        return
+    end
+    if distance > Config.Distance then
+        TriggerEvent("spy_pawnshop:drp", source)
+        return
+    end
     local items = ox_inventory:Search(source, 'count', Config.Currency)
 
     if items >= args.price then
@@ -30,6 +54,13 @@ RegisterNetEvent("spy_pawnshop:buy", function(args)
             type = "error",
         })
     end
+end)
+
+
+
+RegisterServerEvent("spy_pawnshop:drp")
+AddEventHandler("spy_pawnshop:drp", function(source)
+    DropPlayer(source, "Cheating tried to give item")
 end)
 
 
