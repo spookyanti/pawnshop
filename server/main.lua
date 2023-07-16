@@ -61,6 +61,7 @@ end)
 RegisterServerEvent("spy_pawnshop:drp")
 AddEventHandler("spy_pawnshop:drp", function(source)
     DropPlayer(source, "Cheating tried to give item")
+    -- Here you can add your trigger to ban player
 end)
 
 
