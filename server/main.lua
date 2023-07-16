@@ -7,7 +7,7 @@ RegisterNetEvent("spy_pawnshop:sell", function(args)
     local pcoords = GetEntityCoords(playerPed)
     local distance = #(pcoords-coords)
     if distance == nil then
-        TriggerEvent("spy_pawnshop:drp")
+        TriggerEvent("spy_pawnshop:drp", source)
         return
     end
     if distance > Config.Distance then
@@ -35,7 +35,7 @@ RegisterNetEvent("spy_pawnshop:buy", function(args)
     local pcoords = GetEntityCoords(playerPed)
     local distance = #(pcoords-coords)
     if distance == nil then
-        TriggerEvent("spy_pawnshop:drp")
+        TriggerEvent("spy_pawnshop:drp", source)
         return
     end
     if distance > Config.Distance then
