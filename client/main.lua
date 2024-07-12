@@ -1,6 +1,5 @@
 local options = {}
 local options2 = {}
-local Player = PlayerPedId()
 lib.locale()
 
 exports.ox_target:addBoxZone({
@@ -44,7 +43,7 @@ Citizen.CreateThread(function()
             args = {
                 item = k,
                 price = z.price,
-                source = Player
+                source = cache.ped
             },
             description = tostring(z.price.." $"),
             serverEvent = "spy_pawnshop:buy",
@@ -60,7 +59,7 @@ end)
 RegisterNetEvent("spy_pawnshop:menu1")
 AddEventHandler("spy_pawnshop:menu1", function()
     local coords = Config.Target.pos
-    local pcoords = GetEntityCoords(Player)
+    local pcoords = GetEntityCoords(cache.ped)
 
     if #(pcoords - coords) <= 3 then
         lib.showContext("wbmenu")
